@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import LockIcon from "@material-ui/icons/Lock";
 import "./styles/App.css";
+import {
+	LoginTitle,
+	Form,
+	InputContainer,
+	Input,
+	Error,
+	Login,
+	Logout,
+} from "./styles/Styles";
 import Todos from "./Todos";
 
 function App() {
@@ -29,38 +38,45 @@ function App() {
 	return (
 		<div>
 			{isUserActive ? (
-				<Todos email={user.email} />
+				<div>
+					<Logout>
+						<button onClick={onLogout}>Logout</button>
+					</Logout>
+					<Todos email={user.email} />
+				</div>
 			) : (
-				<>
-					<h2>Rapptr Labs</h2>
-					<form>
-						<div>
+				<div>
+					<LoginTitle>Rapptr Labs</LoginTitle>
+					<Form onSubmit={onLogin}>
+						<InputContainer>
 							<label>Email:</label>
 							<br />
 							<span>
 								<AccountCircle />
 							</span>
-							<input
+							<Input
 								type="email"
 								name="email"
+								onChange={handleEmailChange}
 								placeholder="user@rapptrlabs.com"
 							/>
-						</div>
-						<div>
+						</InputContainer>
+						<InputContainer>
 							<label>Password:</label>
 							<br />
 							<span>
 								<LockIcon />
 							</span>
-							<input
+							<Input
 								type="password"
 								name="password"
+								onChange={handlePasswordChange}
 								placeholder="Must be at least 4 characters"
 							/>
-						</div>
-						<button type="submit">Login</button>
-					</form>
-				</>
+						</InputContainer>
+						<Login type="submit">Login</Login>
+					</Form>
+				</div>
 			)}
 		</div>
 	);
