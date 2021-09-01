@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 //LoginScreen Style
 
@@ -21,6 +21,12 @@ export const Login = styled.button`
 	cursor: pointer;
 	justify-content: center;
 	margin-top: 20px;
+	${(props) =>
+		props.isValid &&
+		css`
+			opacity: 0.5;
+			pointer-events: none;
+		`}
 	&:hover {
 		background-color: #004080;
 	}
@@ -60,6 +66,7 @@ export const Input = styled.input`
   padding: 10px;
   padding-left: 30px;
   width: 100%;
+  border-color: ${(props) => props.isValid && "red"};
   @media (max-width: 400px) {
     box-sizing: border-box;
   }
@@ -79,6 +86,11 @@ export const Form = styled.form`
 	flex-direction: column;
 	margin-top: 10%;
 `;
+
+/////////////////////////////////////////////////
+
+//Todo list Style
+
 
 //My To-Do list title
 export const TodoTitle = styled.h2`
@@ -134,6 +146,9 @@ export const UpdateInput = styled.input`
 	background-color: inherit;
 	font-size: 16px;
 	width: 100px;
+	&:focus {
+    outline: ${(props) => props.readOnly && "none"};
+  }
 `;
 
 //Whole table, td->each cell, tr->every even row

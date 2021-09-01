@@ -13,13 +13,10 @@ import {
 } from "./styles/Styles";
 
 export default function Todo({ email }) {
-	//Store list of todos
+	//
 	const [todos, setTodos] = useState([]);
-    //Whether to show the adding of more todo or not
 	const [focusAddTodo, setFocusAddTodo] = useState(false);
-    //Which todo to focus when clicked edit
 	const [whichTodoToFocus, setWhichTodoToFocus] = useState("");
-    //Referencing the input of adding to
 	const addTodoRef = useRef(null);
 
 	//Remove a todo, update the state, and the storage
@@ -117,13 +114,7 @@ export default function Todo({ email }) {
 					{todos.map((todo, index) => (
 						<tr key={index}>
 							<td>
-								<UpdateInput
-									id={todo}
-									key={`todos:${todo}`}
-									defaultValue={todo}
-									maxLength="25"
-									readOnly={todo !== whichTodoToFocus}
-								/>
+								<UpdateInput id={todo} key={`todos:${todo}`} defaultValue={todo} maxLength="25" readOnly={todo !== whichTodoToFocus}/>
 							</td>
 							{whichTodoToFocus === todo ? (
 								<td>
