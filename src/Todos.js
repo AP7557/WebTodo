@@ -2,6 +2,15 @@ import React, { useState, useRef } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import EditIcon from "@material-ui/icons/Edit";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+import {
+	TodoTitle,
+	Search,
+	Header,
+	Table,
+	AddInput,
+	Button,
+	UpdateInput,
+} from "./styles/Styles";
 
 export default function Todos() {
 	const [todos, setTodos] = useState(["todo"]);
@@ -21,8 +30,8 @@ export default function Todos() {
 	};
 	return (
 		<div>
-			<h2>My To-Do List</h2>
-			<div>
+			<TodoTitle>My To-Do List</TodoTitle>
+			<Search>
 				<span>
 					<SearchIcon />
 				</span>
@@ -31,50 +40,56 @@ export default function Todos() {
 					onChange={(e) => OnSearch(e.target.value)}
 				/>
 				<button>New</button>
-			</div>
-			<table>
+			</Search>
+			<Table>
 				<tbody>
-					<tr>
+					<Header>
 						<td>Todo</td>
 						<td>Edit</td>
 						<td>Remove</td>
-					</tr>
+					</Header>
 					<tr>
 						<td>
-							<input placeholder="Add Todo" ref={addTodoRef} />
+							<AddInput placeholder="Add Todo" ref={addTodoRef} />
 						</td>
 						<td>
-							<button
+							<Button
 								onClick={() => {
 									OnAdd(addTodoRef.current.value);
-								}}>Save</button>
+								}}>
+								Save
+							</Button>
 						</td>
-						{todos.map((todo, index) => (
-							<tr key={index}>
-								<td>
-									<input id={todo} key={`todos:${todo}`} defaultValue={todo} />
-								</td>
-								<td>
-									<EditIcon
-										id="pointer"
-										color="action"
-										onClick={() => {
-											document.getElementById(todo).focus();
-										}}
-									/>
-								</td>
-								<td>
-									<RemoveCircleIcon
-										id="pointer"
-										color="error"
-										onClick={() => onRemove(todo)}
-									/>
-								</td>
-							</tr>
-						))}
 					</tr>
+					{todos.map((todo, index) => (
+						<tr key={index}>
+							<td>
+								<UpdateInput
+									id={todo}
+									key={`todos:${todo}`}
+									defaultValue={todo}
+								/>
+							</td>
+							<td>
+								<EditIcon
+									id="pointer"
+									color="action"
+									onClick={() => {
+										document.getElementById(todo).focus();
+									}}
+								/>
+							</td>
+							<td>
+								<RemoveCircleIcon
+									id="pointer"
+									color="error"
+									onClick={() => onRemove(todo)}
+								/>
+							</td>
+						</tr>
+					))}
 				</tbody>
-			</table>
+			</Table>
 		</div>
 	);
 }
