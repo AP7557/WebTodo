@@ -14,19 +14,35 @@ import {
 
 export default function Todos() {
 	const [todos, setTodos] = useState(["todo"]);
+	const [focusAddTodo, setFocusAddTodo] = useState(false);
+	const [whichTodoToFocus, setWhichTodoToFocus] = useState("");
 	const addTodoRef = useRef(null);
 
 	const onRemove = (todoToRemove) => {
-		console.log(todoToRemove);
+		let todoCopy = [...todos];
+		todoCopy = todoCopy.filter((tc) => tc !== todoToRemove);
+		setTodos(todoCopy);
 	};
-	const onUpdate = (todoToUpdate) => {
-		console.log(todoToUpdate);
+	const onUpdate = (todoToUpdate, index) => {
+		let todoCopy = [...todos];
+		let updatedTodo = document.getElementById(todoToUpdate).value;
+		if (updatedTodo.length >= 1 && updatedTodo.length <= 25) {
+			todoCopy[index] = updatedTodo;
+		}
+		setTodos(todoCopy);
 	};
-	const OnAdd = (todoToAdd) => {
-		console.log(todoToAdd);
+	const onAdd = (todoToAdd) => {
+		let todoCopy = [...todos];
+		if (todoToAdd.length >= 1) {
+			todoCopy.unshift(todoToAdd);
+			setTodos(todoCopy);
+		}
 	};
-	const OnSearch = (value) => {
-		console.log(value);
+	const onSearch = (value) => {
+		let todoCopy = todos.filter((tc) =>
+			tc.toLowerCase().includes(value.toLowerCase())
+		);
+		setTodos(todoCopy);
 	};
 	return (
 		<div>
@@ -37,9 +53,14 @@ export default function Todos() {
 				</span>
 				<input
 					placeholder="Search for Todos"
-					onChange={(e) => OnSearch(e.target.value)}
+					onChange={(e) => onSearch(e.target.value)}
 				/>
-				<button>New</button>
+				<Button
+					onClick={() => {
+						setFocusAddTodo(true);
+					}}>
+					New
+				</Button>
 			</Search>
 			<Table>
 				<tbody>
@@ -48,44 +69,64 @@ export default function Todos() {
 						<td>Edit</td>
 						<td>Remove</td>
 					</Header>
-					<tr>
-						<td>
-							<AddInput placeholder="Add Todo" ref={addTodoRef} />
-						</td>
-						<td>
-							<Button
-								onClick={() => {
-									OnAdd(addTodoRef.current.value);
-								}}>
-								Save
-							</Button>
-						</td>
-					</tr>
+					{focusAddTodo && (
+						<tr>
+							<td>
+								<AddInput
+									placeholder="Add Todo"
+									maxLength="25"
+									ref={addTodoRef}
+								/>
+							</td>
+							<td>
+								<Button
+									onClick={() => {
+										onAdd(addTodoRef.current.value);
+										addTodoRef.current.value = "";
+										setFocusAddTodo(false);
+									}}>
+									Save
+								</Button>
+							</td>
+							<td></td>
+						</tr>
+					)}
 					{todos.map((todo, index) => (
 						<tr key={index}>
 							<td>
-								<UpdateInput
-									id={todo}
-									key={`todos:${todo}`}
-									defaultValue={todo}
-								/>
+								<UpdateInput id={todo} key={`todos:${todo}`} defaultValue={todo} maxLength="25" readOnly={todo !== whichTodoToFocus}/>
 							</td>
-							<td>
-								<EditIcon
-									id="pointer"
-									color="action"
-									onClick={() => {
-										document.getElementById(todo).focus();
-									}}
-								/>
-							</td>
-							<td>
-								<RemoveCircleIcon
-									id="pointer"
-									color="error"
-									onClick={() => onRemove(todo)}
-								/>
-							</td>
+							{whichTodoToFocus === todo ? (
+								<td>
+									<Button
+										onClick={() => {
+											setWhichTodoToFocus("");
+											onUpdate(todo, index);
+										}}>
+										Save
+									</Button>
+								</td>
+							) : (
+								<>
+									<td>
+										<EditIcon
+											id="pointer"
+											color="action"
+											onClick={() => {
+												document.getElementById(todo).focus();
+												setWhichTodoToFocus(todo);
+											}}
+										/>
+									</td>
+									<td>
+										<RemoveCircleIcon
+											id="pointer"
+											color="error"
+											onClick={() => onRemove(todo)}
+										/>
+									</td>
+								</>
+							)}
 						</tr>
 					))}
 				</tbody>
