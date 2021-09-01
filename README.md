@@ -1,70 +1,24 @@
-# Getting Started with Create React App
+# [WebTodo]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+WebTodo is a web application that allows an authorized user to login and create/update/remove todos
 
-## Available Scripts
+## Requirements and RUN
+1. `npm install`
+2. `npm start`
 
-In the project directory, you can run:
+- [x] Make an api call to find out if user is authorized.
+- If any error
+-    [x] Show the appropriate error
+-    [x] Disable the login button
+- [x] After login show all todo
+- [x] Search todos functionality
+- [x] New todo functionality
+- [x] Edit todo fuctionality
+- [x] Remove todo functionality
+- [x] Logout functionality
 
-### `npm start`
+## Explanation
+The main time I took while completing this project was in styling the application to make it look good, everything else was easy to get through. I first spend some time trying see what packages I will need for the project and how I want the final product to look like. Once I got a basic design I worked on skeleton code of todo list screen, then moved on to styling it so it looked somewhat nice, after the styling was done I went to implementing the functionalites like adding a new todo, updating/removing the todo, searching for the todos which all that took about 40 minutes. I then moved on to working on the login screen, and applied the same concept as todo list screen, working on skeleton, styling, and then adding functionalites such as login and logout. Once those were done I spend some time in api request to authenticate the user which took about 15 minutes. The final step was to implement all the error/validation of the email/password fields and make the final styling, the login screen took about 35 minutes, all together about 1 hour and 35 minutes.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Framework used
+- [React](https://reactjs.org) - Front-end Component-based, single page
