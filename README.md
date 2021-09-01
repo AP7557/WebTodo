@@ -7,9 +7,8 @@ WebTodo is a web application that allows an authorized user to login and create/
 2. `npm start`
 
 - [x] Make an api call to find out if user is authorized.
-- If any error
--    [x] Show the appropriate error
--    [x] Disable the login button
+- [x] Show the appropriate error, if any
+- [x] Disable the login button
 - [x] After login show all todo
 - [x] Search todos functionality
 - [x] New todo functionality
