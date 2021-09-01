@@ -1,4 +1,4 @@
-# [WebTodo]
+# WebTodo
 
 WebTodo is a web application that allows an authorized user to login and create/update/remove todos
 
