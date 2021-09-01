@@ -145,7 +145,7 @@ export const UpdateInput = styled.input`
 	text-align: center;
 	background-color: inherit;
 	font-size: 16px;
-	width: 100px;
+	width: 90%;
 	&:focus {
     outline: ${(props) => props.readOnly && "none"};
   }

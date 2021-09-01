@@ -1,9 +1,11 @@
-* {
-	letter-spacing: 1px;
+*{
+    letter-spacing: 1px;
 }
-body {
-	margin: 20px;
+body{
+    margin: 20px;
+    background-color: #1ebbd7;
 }
-#pointer {
-	cursor: pointer;
+
+#pointer{
+    cursor: pointer;
 }
