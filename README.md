@@ -23,7 +23,7 @@ The main time I took while completing this project was in styling the applicatio
 - [React](https://reactjs.org) - Front-end Component-based, single page
 
 ## Libraries used
-- [styled-components](https://styled-components.com/) - Styling the application
+- [Styled-Components](https://styled-components.com/) - Styling the application
 - [Material Icons](https://material-ui.com/components/material-icons/) - For icons
 
 
